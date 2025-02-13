@@ -30,7 +30,7 @@ if(cluster.isPrimary){
    const server=createServer(app)
    console.log(`Worker ${process.pid}`);
    app.use(cors({
-      origin: ["http://localhost:3000" ,"http://localhost:3001" ,"http://localhost:5173"],
+      origin: ["http://localhost:3000" ,"http://localhost:3001" ,"http://localhost:5173","https://file-sharer-web55.vercel.app","https://file-sharer.ganeshchaitanya.com"],
       credentials:true,  
       methods: ["GET", "POST", "PUT", "DELETE"]         
    }))

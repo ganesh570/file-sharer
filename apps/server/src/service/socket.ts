@@ -5,7 +5,7 @@ class SocketService{
     private constructor(){
         SocketService._io= new Server({
             cors: {
-              origin: ["http://localhost:3000"," http://localhost:3001", "https://admin.socket.io"],
+              origin: ["http://localhost:3000"," http://localhost:3001", "https://admin.socket.io","https://file-sharer-web55.vercel.app","https://file-sharer.ganeshchaitanya.com"],
               credentials:true,
             },
           });     
