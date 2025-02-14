@@ -51,7 +51,7 @@ router.post("/signup",async (req:Request,res:Response)=>{
                     data:response
                 },JWT_SECRET);
 
-            res.status(200).cookie("token",token,{ httpOnly: false, secure: true, sameSite: "none" }).json({
+            res.status(200).cookie("token",token,{ httpOnly: true, secure: true, sameSite: "none" }).json({
                 message:"Account Created!"
             });
             
@@ -100,7 +100,7 @@ router.post("/signin",async (req:Request,res:Response)=>{
                 userId:response
             },JWT_SECRET);
 
-            res.status(200).cookie("token",token,{ httpOnly: false, secure: true, sameSite: "none" }).json({
+            res.status(200).cookie("token",token,{ httpOnly: true, secure: true, sameSite: "none" }).json({
                 message:"Logged In!"
             });
         }catch(e){
