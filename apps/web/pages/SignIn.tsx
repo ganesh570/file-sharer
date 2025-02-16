@@ -5,6 +5,7 @@ import {useForm} from 'react-hook-form';
 import axios from "axios";
 import { useRouter } from 'next/navigation'
 import Link from "next/link";
+import Cookies from 'js-cookie';
 
 type SignInProps={
   email:string,
@@ -17,11 +18,21 @@ const SignIn=()=>{
   const {register, handleSubmit, formState}=form;
   const [error,setError]=useState<boolean>(false)
   const {errors}=formState;
+  axios.defaults.withCredentials = true;
+  axios.interceptors.request.use(
+    (config) => {
+      config.withCredentials = true
+      return config
+    },
+    (error) => {
+      return Promise.reject(error)
+    }
+  )
+  
   const onSubmit=async (data:SignInProps)=>{
       try{
         const response=await axios.post(process.env.NEXT_PUBLIC_BACKEND!+"/api/v1/auth/signin",data);
         if(response){
-          
           router.push("/");
         }else{
           setError(true)

@@ -5,6 +5,16 @@ import {useForm} from 'react-hook-form';
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+axios.defaults.withCredentials = true;
+axios.interceptors.request.use(
+  (config) => {
+    config.withCredentials = true
+    return config
+  },
+  (error) => {
+    return Promise.reject(error)
+  }
+)
 
 type SignUpProps={
   email:string,
