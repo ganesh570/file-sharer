@@ -10,6 +10,7 @@ const ChatApp = dynamic(
 
 export default function Home() {
   const cookie=Cookies.get('token');
+  console.log(cookie)
   if(!cookie){
     return(
         <LandingPage/>
