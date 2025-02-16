@@ -51,7 +51,7 @@ router.post("/signup",async (req:Request,res:Response)=>{
                     data:response
                 },JWT_SECRET);
 
-            res.status(200).cookie("token",token,{ httpOnly: true,maxAge:1024*60*60*24*3, secure: true, sameSite: "none",domain: '.ganeshchaitanya.com', path: '/'}).json({
+            res.status(200).cookie("token",token,{ httpOnly: false,maxAge:1024*60*60*24*3, secure: true, sameSite: "none",domain: '.ganeshchaitanya.com', path: '/'}).json({
                 message:"Account Created!"
             });
             
@@ -100,7 +100,7 @@ router.post("/signin",async (req:Request,res:Response)=>{
                 userId:response
             },JWT_SECRET);
 
-            res.status(200).cookie("token",token,{ httpOnly: true,maxAge:1024*60*60*24*3, secure: true, sameSite: "none",domain: '.ganeshchaitanya.com', path: '/' }).json({
+            res.status(200).cookie("token",token,{ httpOnly: false,maxAge:1024*60*60*24*3, secure: true, sameSite: "none",domain: '.ganeshchaitanya.com', path: '/' }).json({
                 message:"Logged In!"
             });
         }catch(e){
