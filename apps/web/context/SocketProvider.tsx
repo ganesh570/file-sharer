@@ -58,7 +58,6 @@ export const SocketProvider:React.FC<SocketProviderProps>=({children})=>{
     },[])
 
     const onSuccess=useCallback(async (msg:string)=>{
-        console.log(msg)
         setSuccess(s=>s+1);
     },[])
 
