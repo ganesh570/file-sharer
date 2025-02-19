@@ -5,16 +5,7 @@ import {useForm} from 'react-hook-form';
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-axios.defaults.withCredentials = true;
-axios.interceptors.request.use(
-  (config) => {
-    config.withCredentials = true
-    return config
-  },
-  (error) => {
-    return Promise.reject(error)
-  }
-)
+
 
 type SignUpProps={
   email:string,
@@ -28,9 +19,18 @@ const SignUp=()=>{
   const {register, handleSubmit, formState}=form;
   const {errors}=formState;
   const [error,setError]=useState<boolean>(false);
+  axios.defaults.withCredentials = true;
+  axios.interceptors.request.use(
+    (config) => {
+      config.withCredentials = true
+      return config
+    },
+    (error) => {
+      return Promise.reject(error)
+    }
+  )
   const onSubmit=async (data:SignUpProps)=>{
     try{
-
       const response=await axios.post(process.env.NEXT_PUBLIC_BACKEND!+"/api/v1/auth/signup",data);
       if(response){
         router.push("/");

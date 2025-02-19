@@ -51,7 +51,7 @@ router.post("/signup",async (req:Request,res:Response)=>{
                     data:response
                 },JWT_SECRET);
 
-            res.status(200).cookie("token",token,{ httpOnly: false,maxAge:1024*60*60*24*3*10, secure: true, sameSite: "none"}).json({
+            res.status(200).cookie("CLIENT_TOKEN",token,{ httpOnly: false,maxAge:1024*60*60*24*3*10, secure: true, sameSite: "none"}).json({
                 message:"Account Created!",
             });
             
@@ -100,7 +100,7 @@ router.post("/signin",async (req:Request,res:Response)=>{
                 userId:response
             },JWT_SECRET);
 
-            res.status(200).cookie("token",token,{ httpOnly: false,maxAge:1024*60*60*24*3*10, secure: true, sameSite: "none" }).json({
+            res.status(200).cookie("CLIENT_TOKEN",token,{ httpOnly: false,maxAge:1024*60*60*24*3*10, secure: true, sameSite: "none" }).json({
                 message:"Logged In!",
             });
         }catch(e){
@@ -119,7 +119,7 @@ router.post("/signin",async (req:Request,res:Response)=>{
 })
 
 router.get("/user",authMiddleWare,async (req,res)=>{
-    const token=req.cookies.token;
+    const token=req.cookies.CLIENT_TOKEN;
     const decoded=jwt.verify(token,JWT_SECRET) as JwtPayload;
     try{
         const response=await prisma.user.findUnique({
@@ -148,7 +148,7 @@ router.get("/user",authMiddleWare,async (req,res)=>{
 })
 
 router.get("/logout",(req,res)=>{
-    res.clearCookie("token").json({
+    res.clearCookie("CLIENT_TOKEN").json({
         message:"Logged Out!"
     });
 })

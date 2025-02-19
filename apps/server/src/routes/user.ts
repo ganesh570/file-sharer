@@ -22,7 +22,7 @@ const prisma=new PrismaClient();
 router.post("/create_grp",authMiddleWare,async (req:Request,res:Response)=>{
    const gBody=req.body;
    try{
-    const token=req.cookies.token;
+    const token=req.cookies.CLIENT_TOKEN;
     const decoded=jwt.verify(token,JWT_SECRET) as JwtPayload;
     const response=await prisma.group.create({
         data:{
@@ -68,7 +68,7 @@ router.post("/create_grp",authMiddleWare,async (req:Request,res:Response)=>{
 router.post("/join_grp",authMiddleWare,async (req:Request,res:Response)=>{
     try{
         const gBody=req.body;
-        const token=req.cookies.token;
+        const token=req.cookies.CLIENT_TOKEN;
         const decoded=jwt.verify(token,JWT_SECRET) as JwtPayload
         const response=await prisma.userGroup.create({
             data:{
