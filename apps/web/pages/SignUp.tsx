@@ -33,7 +33,7 @@ const SignUp=()=>{
 
       const response=await axios.post(process.env.NEXT_PUBLIC_BACKEND!+"/api/v1/auth/signup",data);
       if(response){
-        router.push("/signin");
+        router.push("/");
       }else{
         setError(true)
         return;

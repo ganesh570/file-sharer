@@ -202,7 +202,7 @@ io.on('connection',(socket:Socket)=>{
     console.log(`User Connected ${socket.id}`);
     socket.on('message',async ({message,grpId}:MsgObject)=>{
     try {
-        const token=socket.handshake.auth.cookie
+        const token=socket.handshake.auth.cookie;
         const decoded=jwt.verify(token,JWT_SECRET) as JwtPayload;
         const response=await prisma.message.create({
             data:{

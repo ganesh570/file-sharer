@@ -19,8 +19,7 @@ export interface ISocketContext{
     sendMessage:({category,grpId,msg}:sendMessageProps)=>void;
     messages:string[];
     setMessages:(message:string[])=>void,
-    success:number
-    
+    success:number,
 }
 
 const SocketContext = React.createContext<ISocketContext | null>(null);

@@ -28,9 +28,9 @@ const LeftMenu=()=>{
     const {user}=UseUser(process.env.NEXT_PUBLIC_BACKEND!+"/api/v1/auth/user"); 
     const [popUp,setPopUp]=useState<boolean>(false);
     const [popUp2,setPopUp2]=useState<boolean>(false);
-    
     const hanOnClose= ()=>{setPopUp(false)}
     const hanOnClose2= ()=>{setPopUp2(false)}
+
     return (
         <div className="flex flex-col border-r border-neutral-700 w-100 h-screen">
             <div className="flex justify-between items-center bg-[#202d33] h-[60px] p-3">
