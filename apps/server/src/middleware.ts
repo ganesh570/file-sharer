@@ -5,7 +5,7 @@ import { Response, NextFunction } from 'express';
 
 const authMiddleWare=(req:any,res:any,next:NextFunction)=>{
    try{
-    const token=req.cookies.token;
+    const token=req.cookies.CLIENT_TOKEN;
     const decoded=jwt.verify(token,JWT_SECRET) as JwtPayload
     if(decoded.userId){
         req.userId=decoded.userId
