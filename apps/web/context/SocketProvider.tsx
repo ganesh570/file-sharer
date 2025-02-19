@@ -35,7 +35,8 @@ export const SocketProvider:React.FC<SocketProviderProps>=({children})=>{
     const [messages,setMessages]=useState<string[]>([])
     const [cookies, setCookie] = useCookies(["CLIENT_TOKEN"]);
     const [success,setSuccess]=useState<number>(1);
-    
+    console.log("SocketProvider")
+    console.log(cookies)
     const sendMessage:ISocketContext["sendMessage"]=useCallback(({category,grpId,msg})=>{
         
         if(socket){

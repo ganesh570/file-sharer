@@ -11,6 +11,7 @@ const ChatApp = dynamic(
 
 export default function Home() {
   const cookies = Cookies.get('CLIENT_TOKEN');
+  console.log(cookies)
   if(!cookies){
     return(
         <LandingPage/>
